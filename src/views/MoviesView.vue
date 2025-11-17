@@ -1,19 +1,29 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
-    import api from '@/plugins/axios';
-
-    const genres = ref([]);
+    import { onMounted } from 'vue';
+    import { useMovieStore } from '@/stores/movieStore';
+    
+    const movieStore = useMovieStore()
 
     onMounted(async () => {
-    const response = await api.get('genre/movie/list?language=pt-BR');
-    genres.value = response.data.genres;
+        await movieStore.getMovies()
     });
 </script>
+
 <template>
     <div>
-    <h1>Gêneros de filmes</h1>
-    <ul>
-        <li v-for="genre in genres" :key="genre.id">{{ genre.name }}</li>
+    <h1>Gêneros de programas de TV</h1>
+    <ul v-for="movie in movieStore.movies" :key="movie.id">
+    <li> {{ movie.title }}</li>             
+    <img
+      :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+      :alt="movie.title"
+    />
     </ul>
     </div>
 </template>
+
+<style scoped>
+li {
+    color: white
+} 
+</style>
