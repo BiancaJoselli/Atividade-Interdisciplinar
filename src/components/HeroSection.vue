@@ -5,6 +5,7 @@
     <div class="overlay">
         <h1>BEM-VINDO AO UNIVERSO MARVEL</h1>
         <p>Explore os maiores heróis, vilões e histórias épicas do cinema e das séries</p>
+        <p>Saiba mais</p>
     </div>
     </section>
 </template>
