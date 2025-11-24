@@ -1,27 +1,27 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useMovieStore } from '@/stores/movieStore'
+import { useSerieStore } from '@/stores/serieStore'
 
-const movieStore = useMovieStore()
+const serieStore = useSerieStore()
 
 onMounted(async () => {
-  await movieStore.listMovies()
+  await serieStore.getSeries()
 })
 </script>
 
 <template>
-  <div class="movies-container">
-    <h1>Filmes</h1>
+  <div class="series-container">
+    <h1>Séries</h1>
 
     <div class="grid">
       <router-link
-        v-for="movie in movieStore.movies"
-        :key="movie.id"
-        :to="`/movie/${movie.id}`"
-        class="movie-card"
+        v-for="serie in serieStore.series"
+        :key="serie.id"
+        :to="`/serie/${serie.id}`"
+        class="serie-card"
       >
         <div>
-          <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
+          <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" :alt="serie.title" />
         </div>
       </router-link>
     </div>
@@ -29,7 +29,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.movies-container {
+.series-container {
   padding: 2rem;
 }
 
@@ -46,7 +46,7 @@ h1 {
 }
 
 /* Card de cada filme */
-.movie-card {
+.serie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,21 +54,23 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* animação suave */
 }
 
-.movie-card:hover {
+.serie-card:hover {
   transform: scale(1.08); /* aumenta o card */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* sombra bonita */
   cursor: pointer;
 }
 
 
-.movie-card img {
+.serie-card img {
   width: 100%;
   border-radius: 10px;
 }
 
-.movie-card p {
+.serie-card p {
   color: white;
   margin-top: 0.5rem;
   font-size: 1rem;
 }
+
 </style>
+

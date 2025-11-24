@@ -6,84 +6,74 @@ function sendSearch(event) {
     emit("search", term);
 }
 </script>
-
 <template>
-    <header class="header">
-        <div class="left">
-
-            <nav class="menu">
-                <RouterLink to="/"><img src="/logo.png" width="80" height="50" alt="Logo"></RouterLink>
-                <RouterLink to="/movies" class="active">Filmes</RouterLink>
-                <RouterLink to="/series">Séries</RouterLink>
-                <RouterLink to="/ordem">Ordem Cronológica</RouterLink>
-            </nav>
-        </div>
-
+    <header class="navbar">
+    <nav>
+        <router-link to="/" class="active"><img src="@/assets/logo.png" alt="Marvel Studios" class="logo" /></router-link>
+        <router-link to="/" class="active">Início</router-link>
+        <router-link to="/filmes">Filmes</router-link>
+        <router-link to="/tv">Séries</router-link>
+        <!-- <select class="filtro">
+        <option>Todos</option>
+        <option>Ordem Cronológica</option>
+        </select> -->
         <div class="right">
             <input type="text" placeholder="Buscar filmes e séries..." class="search" @input="sendSearch" />
         </div>
+    </nav>
     </header>
 </template>
 
 <style scoped>
-.header {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.navbar {
+    background-color: #000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 16px 32px;
-    background: #111;
-    border-bottom: 1px solid #222;
-    color: white;
+    padding: 0.5rem 2rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.left {
+nav {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .logo {
-    height: 32px;
+    height: 35px;
+    margin-right: 1rem;
 }
 
-.menu {
-    display: flex;
-    gap: 24px;
-}
-
-.menu a {
-    color: #bbb;
+a {
+    color: #ccc;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 1rem;
+    transition: 0.2s;
 }
 
-.menu a.router-link-active {
-    color: #f00;
-    font-weight: 600;
+a:hover {
+    color: #e62429;
 }
 
-.right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.router-link-exact-active {
+    color: #e62429;
+    font-weight: bold;
+}
+.filtro {
+    margin-left: auto;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
 }
 
-.select,
-.search {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 6px 12px;
-    border-radius: 6px;
-    color: white;
-}
-
-.search {
-    width: 260px;
-}
-
-.search:focus {
-    outline: none;
-    border-color: #f00;
+.busca {
+    background-color: #222;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    color: #fff;
 }
 </style>
