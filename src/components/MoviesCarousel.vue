@@ -11,7 +11,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 
 onMounted(async () => {
-  await movieStore.getMovies()
+  await movieStore.listMovies()
+
 })
 </script>
 
@@ -29,6 +30,8 @@ onMounted(async () => {
   v-for="movie in movieStore.movies"
   :key="movie.id"
 >
+
+<router-link :to="`/movie/${movie.id}`">
   <div class="card">
     <div class="card-img-wrapper">
     <img
@@ -36,11 +39,9 @@ onMounted(async () => {
       :alt="movie.title"
     />
   </div>
+    </div>
+</router-link>
 
-    <div class="info">
-      <p class="button">Ver</p>
-    </div>
-    </div>
 </swiper-slide>
     </swiper>
   </section>
@@ -117,38 +118,6 @@ ul img {
   );
 }
 
-.info {
-  position: absolute;
-  top: 80%;
-  left: -15%;
-  transform: translate(-50%, -40%);
-  opacity: 0;
-  transition: 0.35s ease;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.info .button {
-  color: #ffffff;
-  background: #e50914;
-  padding: 8px 40px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: 0.3s ease;
-  opacity: 0;
-}
-
-.card:hover .info {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
-
-.card:hover .button {
-  opacity: 1;
-}
-
 .card:hover img {
   transform: scale(1.1);
 }
@@ -159,7 +128,7 @@ ul img {
 
 .card:hover .info {
   opacity: 1;
-  transform: translateY(0); 
+  transform: translateY(0);
 }
 
 .info p {

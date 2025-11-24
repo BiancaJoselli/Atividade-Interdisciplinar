@@ -30,18 +30,17 @@ onMounted(async () => {
         v-for="serie in serieStore.series"
         :key="serie.id"
       >
-      <div class="card">
+      <router-link :to="`/serie/${serie.id}`">
+        <div class="card">
     <div class="card-img-wrapper">
     <img
       :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`"
       :alt="serie.title"
     />
   </div>
+    </div>
+    </router-link>
 
-    <div class="info">
-      <p class="button">Ver</p>
-    </div>
-    </div>
       </swiper-slide>
     </swiper>
   </section>
@@ -116,38 +115,6 @@ ul img {
     rgba(0, 0, 0, 5),
     rgba(0, 0, 0, 0.0)
   );
-}
-
-.info {
-  position: absolute;
-  top: 80%;
-  left: -15%;
-  transform: translate(-50%, -40%);
-  opacity: 0;
-  transition: 0.35s ease;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.info .button {
-  color: #ffffff;
-  background: #e50914;
-  padding: 8px 40px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: 0.3s ease;
-  opacity: 0;
-}
-
-.card:hover .info {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
-
-.card:hover .button {
-  opacity: 1;
 }
 
 .card:hover img {
