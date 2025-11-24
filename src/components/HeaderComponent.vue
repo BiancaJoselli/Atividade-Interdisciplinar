@@ -1,5 +1,11 @@
-<script setup></script>
+<script setup>
+const emit = defineEmits(["search"]);
 
+function sendSearch(event) {
+    const term = event.target.value;
+    emit("search", term);
+}
+</script>
 <template>
     <header class="navbar">
     <nav>
@@ -11,7 +17,9 @@
         <option>Todos</option>
         <option>Ordem Cronológica</option>
         </select> -->
-        <input type="text" placeholder="Buscar filmes e séries..." class="busca" />
+        <div class="right">
+            <input type="text" placeholder="Buscar filmes e séries..." class="search" @input="sendSearch" />
+        </div>
     </nav>
     </header>
 </template>
