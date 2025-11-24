@@ -1,13 +1,14 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 import MovieService from '@/services/movieService'
+
 const movieService = new MovieService()
 
 export const useMovieStore = defineStore('movie', () => {
   const state = reactive({
     currentMovie: {},
     movies: [],
-    topMovies: [],   // <-- ADICIONADO
+    topMovies: [],
   })
 
   const movies = computed(() => state.movies)
@@ -23,7 +24,7 @@ export const useMovieStore = defineStore('movie', () => {
   }
 
   const listMovies = async () => {
-    state.movies = await movieService.getMovies() // CORRIGIDO
+    state.movies = await movieService.getMovies()
   }
 
   const getTopMovies = async () => {
