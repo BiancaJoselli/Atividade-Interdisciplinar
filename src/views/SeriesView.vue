@@ -1,30 +1,76 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
-    import api from '@/plugins/axios';
+import { onMounted } from 'vue'
+import { useSerieStore } from '@/stores/serieStore'
 
-    const movies = ref([]);
+const serieStore = useSerieStore()
 
-    onMounted(async () => {
-    const response = await api.get('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_companies=420');
-    movies.value = response.data.results;
-    });
+onMounted(async () => {
+  await serieStore.getSeries()
+})
 </script>
 
 <template>
-    <div>
-    <h1>Gêneros de programas de TV</h1>
-    <ul v-for="movie in movies" :key="movie.id">
-    <li> {{ movie.title }}</li>
-    <img
-        :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-        :alt="movie.title"
-    />
-    </ul>
+  <div class="series-container">
+    <h1>Séries</h1>
+
+    <div class="grid">
+      <router-link
+        v-for="serie in serieStore.series"
+        :key="serie.id"
+        :to="`/serie/${serie.id}`"
+        class="serie-card"
+      >
+        <div>
+          <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" :alt="serie.title" />
+        </div>
+      </router-link>
     </div>
+  </div>
 </template>
 
 <style scoped>
-li {
-    color: white
+.series-container {
+  padding: 2rem;
 }
+
+h1 {
+  color: white;
+  margin-bottom: 2rem;
+}
+
+/* GRID COM 4 COLUNAS FIXAS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 4 colunas */
+  gap: 2rem; /* espaçamento entre eles */
+}
+
+/* Card de cada filme */
+.serie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animação suave */
+}
+
+.serie-card:hover {
+  transform: scale(1.08); /* aumenta o card */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* sombra bonita */
+  cursor: pointer;
+}
+
+
+.serie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.serie-card p {
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
 </style>
+

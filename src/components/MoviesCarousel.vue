@@ -48,31 +48,14 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-section{
+section {
   margin: 0 2vw;
 }
 
 h2 {
   color: white;
   font-size: 2.5vw;
-  padding: 2vw 0 2vw 0vw;
-}
-
-div {
-  display: flex;
-}
-
-ul li {
-  text-decoration: none;
-  list-style: none;
-  color: #e50914;
-}
-
-ul img {
-  width: 20vw;
-  height: 30vw;
-  object-fit: cover;
-  border-radius: 10px;
+  padding: 2vw 0;
 }
 
 .card {
@@ -80,99 +63,50 @@ ul img {
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .card-img-wrapper {
   overflow: hidden;
   border-radius: 12px;
-}
+  }
 
 .card img {
   width: 100%;
   height: auto;
-  border-radius: 0;
-  transition: transform 0.4s ease;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  z-index: 20;
+  transform: scale(1.03);
 }
 
 .card:hover img {
-  transform: scale(1.12);
+  transform: scale(1.08);
 }
 
-.card::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 5),
-    rgba(0, 0, 0, 0.0)
-  );
-}
-
-.card:hover img {
-  transform: scale(1.1);
-}
-
-.card:hover .fade {
-  opacity: 1;
-}
-
-.card:hover .info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.info p {
-  margin: 1px 2px 0 8vw ;
-  font-size: 18px;
-}
-
+/* Navegação do Swiper */
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev) {
-  color: rgb(0, 0, 0);
-}
-
-:deep(.swiper-button-next::after),
-:deep(.swiper-button-prev::after) {
-  font-size: 60vw;
-
-}
-
-:deep(.swiper-button-next) {
-  right: 1vw;
-}
-
-:deep(.swiper-button-prev) {
-  left: 10px;
-}
-
-:deep(.swiper-button-next),
-:deep(.swiper-button-prev) {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-:deep(.swiper-button-next),
-:deep(.swiper-button-prev) {
+  color: black;
   background: rgba(221, 22, 22, 0.9);
   padding: 10px;
   border-radius: 50%;
   transition: 0.3s;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 :deep(.swiper-button-next:hover),
 :deep(.swiper-button-prev:hover) {
   background: rgba(0, 0, 0, 0.7);
   color: white;
+}
+
+:deep(.swiper-button-next::after),
+:deep(.swiper-button-prev::after) {
+  font-size: 3vw;
 }
 
 </style>

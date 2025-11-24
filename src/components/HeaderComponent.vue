@@ -3,14 +3,14 @@
 <template>
     <header class="navbar">
     <nav>
-        <img src="@/assets/logo.png" alt="Marvel Studios" class="logo" />
+        <router-link to="/" class="active"><img src="@/assets/logo.png" alt="Marvel Studios" class="logo" /></router-link>
         <router-link to="/" class="active">Início</router-link>
         <router-link to="/filmes">Filmes</router-link>
         <router-link to="/tv">Séries</router-link>
-        <select class="filtro">
+        <!-- <select class="filtro">
         <option>Todos</option>
         <option>Ordem Cronológica</option>
-        </select>
+        </select> -->
         <input type="text" placeholder="Buscar filmes e séries..." class="busca" />
     </nav>
     </header>

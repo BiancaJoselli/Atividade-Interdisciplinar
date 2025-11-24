@@ -2,29 +2,37 @@ import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 import SerieService from '@/services/serieService'
 
+const serieService = new SerieService()
+
 export const useSerieStore = defineStore('serieStore', () => {
   const state = reactive({
     series: [],
-    currentSerie: {}  
+    currentSerie: {},
+    topSeries: [],
   })
 
   const series = computed(() => state.series)
   const currentSerie = computed(() => state.currentSerie)
+  const topSeries = computed(() => state.topSeries)
 
   const getSeries = async () => {
-    const serieService = new SerieService()
     state.series = await serieService.getSeries()
   }
 
   const getSerieDetail = async (id) => {
-    const serieService = new SerieService()
     state.currentSerie = await serieService.getSerieDetail(id)
+  }
+
+  const getTopSeries = async () => {
+    state.topSeries = await serieService.getTopSeries()
   }
 
   return {
     series,
+    topSeries,
     currentSerie,
     getSeries,
-    getSerieDetail
+    getSerieDetail,
+    getTopSeries,
   }
 })
