@@ -53,7 +53,7 @@ onMounted(async () => {
 <style scoped>
 .hero-container {
   height: 90vh;
-  margin: 4vw 2vw 3vw 2vw;
+  margin: 4vw 0 3vw 0;
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
