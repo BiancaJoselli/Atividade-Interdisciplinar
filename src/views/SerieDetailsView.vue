@@ -62,7 +62,7 @@ onMounted(async () => {
 .main {
   color: white;
   display: flex;
-  margin: 2vw;
+  margin: 6vw 2vw 0 2vw;
 }
 
 .poster {
