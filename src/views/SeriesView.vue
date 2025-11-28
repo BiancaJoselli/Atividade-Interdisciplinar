@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useSerieStore } from '@/stores/serieStore'
+import HeroSeries from '@/components/HeroSeries.vue'
 
 const serieStore = useSerieStore()
 
@@ -11,8 +12,7 @@ onMounted(async () => {
 
 <template>
   <div class="series-container">
-    <h1>Séries</h1>
-
+    <HeroSeries/>
     <div class="grid">
       <router-link
         v-for="serie in serieStore.series"
@@ -31,11 +31,6 @@ onMounted(async () => {
 <style scoped>
 .series-container {
   padding: 2rem;
-}
-
-h1 {
-  color: white;
-  margin-bottom: 2rem;
 }
 
 /* GRID COM 4 COLUNAS FIXAS */

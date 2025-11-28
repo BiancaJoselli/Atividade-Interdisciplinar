@@ -11,8 +11,6 @@ onMounted(async () => {
 
 <template>
   <div class="movies-container">
-    <h1>Filmes</h1>
-
     <div class="grid">
       <router-link
         v-for="movie in movieStore.movies"
@@ -31,11 +29,6 @@ onMounted(async () => {
 <style scoped>
 .movies-container {
   padding: 2rem;
-}
-
-h1 {
-  color: white;
-  margin-bottom: 2rem;
 }
 
 /* GRID COM 4 COLUNAS FIXAS */
