@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
+import HeroMovies from '@/components/HeroMovies.vue'
 
 const movieStore = useMovieStore()
 
@@ -11,6 +12,7 @@ onMounted(async () => {
 
 <template>
   <div class="movies-container">
+    <HeroMovies />
     <div class="grid">
       <router-link
         v-for="movie in movieStore.movies"
@@ -31,14 +33,12 @@ onMounted(async () => {
   padding: 2rem;
 }
 
-/* GRID COM 4 COLUNAS FIXAS */
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 4 colunas */
-  gap: 2rem; /* espaçamento entre eles */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 2rem; 
 }
 
-/* Card de cada filme */
 .movie-card {
   display: flex;
   flex-direction: column;
