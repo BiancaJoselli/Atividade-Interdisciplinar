@@ -9,11 +9,14 @@ export const useSerieStore = defineStore('serieStore', () => {
     series: [],
     currentSerie: {},
     topSeries: [],
+    animationSeries: [],
   })
 
   const series = computed(() => state.series)
   const currentSerie = computed(() => state.currentSerie)
   const topSeries = computed(() => state.topSeries)
+  const animationSeries = computed(() => state.animationSeries)
+
 
   const getSeries = async () => {
     state.series = await serieService.getSeries()
@@ -27,12 +30,19 @@ export const useSerieStore = defineStore('serieStore', () => {
     state.topSeries = await serieService.getTopSeries()
   }
 
+  const getAnimationSeries = async () => {
+    state.animationSeries = await serieService.getAnimationSeries()
+  }
+
+
   return {
     series,
     topSeries,
     currentSerie,
+    animationSeries, 
     getSeries,
     getSerieDetail,
     getTopSeries,
+    getAnimationSeries,
   }
 })

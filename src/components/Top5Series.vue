@@ -14,16 +14,19 @@ onMounted(async () => {
 
     <div class="top5-container">
       <div
-        class="card"
-        v-for="serie in serieStore.topSeries"
-        :key="serie.id"
-      >
-        <RouterLink :to="`/serie/${serie.id}`">
-          <div class="card-img-wrapper">
-            <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" />
-          </div>
-        </RouterLink>
-      </div>
+  class="card"
+  v-for="(serie, index) in serieStore.topSeries"
+  :key="serie.id"
+>
+  <span class="rank">{{ index + 1 }}</span>
+
+  <RouterLink :to="`/serie/${serie.id}`">
+    <div class="poster">
+      <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" />
+    </div>
+  </RouterLink>
+</div>
+
     </div>
   </section>
 </template>
@@ -39,43 +42,50 @@ h2 {
   padding: 2vw 0;
 }
 
-/* container horizontal */
 .top5-container {
   display: flex;
-  gap: 1.5vw;
+  gap: 3vw;
 }
 
-/* card igual ao outro carrossel */
 .card {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  width: 30vw;
+  height: 20vw;
   position: relative;
-  width: 20vw;       /* mesmo tamanho */
-  height: 30vw;      /* igual ao outro carrossel */
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.5s ease;
 }
 
-.card-img-wrapper {
+.rank {
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.05);
+  -webkit-text-stroke: 0.4vw rgba(255, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17%;
+  margin: 0 0 0 1vw;
+}
+
+.poster {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 12px;
+  position: relative;
 }
 
-.card img {
+.poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.4s ease;
-}
-
-/* Hover igual ao outro carrossel */
-.card:hover {
-  transform: scale(1.05);
-  z-index: 20;
+  transition: transform .4s ease;
 }
 
 .card:hover img {
   transform: scale(1.12);
 }
+
 </style>
