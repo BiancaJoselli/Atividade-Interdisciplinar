@@ -9,11 +9,13 @@ export const useMovieStore = defineStore('movie', () => {
     currentMovie: {},
     movies: [],
     topMovies: [],
+    animationsMovies: []
   })
 
   const movies = computed(() => state.movies)
   const currentMovie = computed(() => state.currentMovie)
   const topMovies = computed(() => state.topMovies)
+  const animationMovies = computed(() => state.animationsMovies)
 
   const clearMovies = () => {
     state.movies = []
@@ -31,5 +33,22 @@ export const useMovieStore = defineStore('movie', () => {
     state.topMovies = await movieService.getTopMovies()
   }
 
-  return { currentMovie, getMovieDetail, movies, topMovies, clearMovies, listMovies, getTopMovies }
+  const filterAnimationMovies = () => {
+    state.animationsMovies = state.movies.filter((movie) =>
+      movie.genre_ids.includes(16)
+    )
+  }
+
+  return {
+    currentMovie,
+    getMovieDetail,
+    movies,
+    topMovies,
+    clearMovies,
+    listMovies,
+    getTopMovies,
+    animationMovies,
+    filterAnimationMovies
+  }
 })
+

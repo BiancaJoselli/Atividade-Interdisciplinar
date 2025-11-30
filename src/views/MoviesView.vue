@@ -2,6 +2,8 @@
 import { onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
 import HeroMovies from '@/components/HeroMovies.vue'
+import MoviesCarousel from '@/components/MoviesCarousel.vue'
+import MoviesAnimation from '@/components/MoviesAnimation.vue'
 
 const movieStore = useMovieStore()
 
@@ -13,18 +15,8 @@ onMounted(async () => {
 <template>
   <div class="movies-container">
     <HeroMovies />
-    <div class="grid">
-      <router-link
-        v-for="movie in movieStore.movies"
-        :key="movie.id"
-        :to="`/movie/${movie.id}`"
-        class="movie-card"
-      >
-        <div>
-          <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
-        </div>
-      </router-link>
-    </div>
+    <MoviesCarousel />
+    <MoviesAnimation />
   </div>
 </template>
 
@@ -33,26 +25,27 @@ onMounted(async () => {
   padding: 2rem;
 }
 
+/* GRID DE FILMES (se você usar em outro lugar) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 2rem; 
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
 }
 
+/* Card dos filmes */
 .movie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animação suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .movie-card:hover {
-  transform: scale(1.08); /* aumenta o card */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* sombra bonita */
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
-
 
 .movie-card img {
   width: 100%;
