@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
+// Recebe os filmes já filtrados do MoviesView
 const props = defineProps({
   movies: {
     type: Array,
@@ -12,8 +13,10 @@ const props = defineProps({
   }
 });
 
-// Agora SEM FILTRO — retorna todos os filmes
-const noAnimatedMovies = computed(() => props.movies);
+// Remove as animações do props.movies
+const noAnimatedMovies = computed(() =>
+  props.movies.filter(movie => !movie.genre_ids?.includes(16))
+);
 </script>
 
 <template>
@@ -46,8 +49,8 @@ const noAnimatedMovies = computed(() => props.movies);
   </section>
 </template>
 
-
 <style scoped>
+/* Seu CSS permaneceu igual */
 section {
   margin: 0 2vw;
 }
