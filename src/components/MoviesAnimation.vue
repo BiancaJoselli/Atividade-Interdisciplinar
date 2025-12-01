@@ -9,8 +9,8 @@ import 'swiper/css/navigation'
 const movieStore = useMovieStore()
 
 onMounted(async () => {
-    await movieStore.listMovies()      
-    movieStore.filterAnimationMovies() 
+    await movieStore.listMovies()
+    movieStore.filterAnimationMovies()
 })
 </script>
 
@@ -83,5 +83,12 @@ h2 {
 :deep(.swiper-button-next:hover),
 :deep(.swiper-button-prev:hover) {
     background: rgba(255, 0, 0, 0.95);
+}
+
+
+:deep(.swiper-button-next:hover),
+:deep(.swiper-button-prev:hover) {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
 }
 </style>
