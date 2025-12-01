@@ -16,7 +16,7 @@ onMounted(async () => {
 });
 
 const filteredMovies = computed(() => {
-  if (!props.search) return movieStore.movies;
+  if (!props.search) return movieStore.movies ?? [];
 
   return movieStore.movies.filter(movie =>
     movie.title?.toLowerCase().includes(props.search.toLowerCase())
