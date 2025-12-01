@@ -1,14 +1,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
-
-const movieStore = useMovieStore()
-
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
+const movieStore = useMovieStore()
 
 onMounted(async () => {
   await movieStore.listMovies()

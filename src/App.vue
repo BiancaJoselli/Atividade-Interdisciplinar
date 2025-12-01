@@ -1,10 +1,14 @@
 <script setup>
-import Header from '@/components/HeaderComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import { ref } from 'vue';
+
+const searchTerm = ref(""); 
 </script>
 
 <template>
-  <Header />
-  <router-view />
+  <HeaderComponent @search="searchTerm = $event" />
+
+  <router-view :search="searchTerm" />
 </template>
 
 <style>
@@ -12,4 +16,4 @@ body {
   margin: 0;
   background-color: #000;
 }
-</style>
+</style>.
