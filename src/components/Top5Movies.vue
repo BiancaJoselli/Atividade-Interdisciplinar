@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
+
 const movieStore = useMovieStore()
 
 onMounted(async () => {
@@ -15,11 +16,13 @@ onMounted(async () => {
     <div class="top5-container">
       <div
         class="card"
-        v-for="movie in movieStore.topMovies"
+        v-for="(movie, index) in movieStore.topMovies"
         :key="movie.id"
       >
+        <span class="rank">{{ index + 1 }}</span>
+
         <RouterLink :to="`/movie/${movie.id}`">
-          <div class="card-img-wrapper">
+          <div class="poster">
             <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
           </div>
         </RouterLink>
@@ -41,35 +44,44 @@ h2 {
 
 .top5-container {
   display: flex;
-  gap: 1.5vw;
+  gap: 3vw;
 }
 
 .card {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  width: 30vw;
+  height: 20vw;
   position: relative;
-  width: 20vw;       
-  height: 30vw;     
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.5s ease;
 }
 
-.card-img-wrapper {
+.rank {
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.05);
+  -webkit-text-stroke: 0.4vw rgba(255, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17%;
+  margin: 0 0 0 1vw;
+}
+
+.poster {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 12px;
+  position: relative;
 }
 
-.card img {
+.poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.4s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  z-index: 20;
+  transition: transform .4s ease;
 }
 
 .card:hover img {
