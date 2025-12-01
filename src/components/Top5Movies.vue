@@ -39,17 +39,15 @@ h2 {
   padding: 2vw 0;
 }
 
-/* container horizontal */
 .top5-container {
   display: flex;
   gap: 1.5vw;
 }
 
-/* card igual ao outro carrossel */
 .card {
   position: relative;
-  width: 20vw;       /* mesmo tamanho */
-  height: 30vw;      /* igual ao outro carrossel */
+  width: 20vw;       
+  height: 30vw;     
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.5s ease;
@@ -69,7 +67,6 @@ h2 {
   transition: transform 0.4s ease;
 }
 
-/* Hover igual ao outro carrossel */
 .card:hover {
   transform: scale(1.05);
   z-index: 20;

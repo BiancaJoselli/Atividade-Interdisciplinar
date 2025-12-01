@@ -1,19 +1,16 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
-
-const movieStore = useMovieStore()
-
-// IMPORTAÇÕES SWIPER
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 
+const movieStore = useMovieStore()
+
 onMounted(async () => {
-    await movieStore.listMovies()      // carrega todos os filmes
-    movieStore.filterAnimationMovies() // cria lista apenas de animação
+    await movieStore.listMovies()      
+    movieStore.filterAnimationMovies() 
 })
 </script>
 
@@ -74,7 +71,6 @@ h2 {
     transform: scale(1.12);
 }
 
-/* CONTROLES SWIPER */
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev) {
     color: #fff;

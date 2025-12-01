@@ -9,7 +9,7 @@ export const useMovieStore = defineStore('movie', () => {
     currentMovie: {},
     movies: [],
     topMovies: [],
-    animationsMovies: []
+    animationsMovies: [],
   })
 
   const movies = computed(() => state.movies)
@@ -48,7 +48,7 @@ export const useMovieStore = defineStore('movie', () => {
     listMovies,
     getTopMovies,
     animationMovies,
-    filterAnimationMovies
+    filterAnimationMovies,
   }
 })
 
