@@ -1,0 +1,91 @@
+<script setup>
+import { onMounted } from 'vue'
+import { useSerieStore } from '@/stores/serieStore'
+const serieStore = useSerieStore()
+
+onMounted(async () => {
+  await serieStore.getTopSeries()
+})
+</script>
+
+<template>
+  <section class="top5">
+    <h2>Top 5 séries hoje</h2>
+
+    <div class="top5-container">
+      <div
+  class="card"
+  v-for="(serie, index) in serieStore.topSeries"
+  :key="serie.id"
+>
+  <span class="rank">{{ index + 1 }}</span>
+
+  <RouterLink :to="`/serie/${serie.id}`">
+    <div class="poster">
+      <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" />
+    </div>
+  </RouterLink>
+</div>
+
+    </div>
+  </section>
+</template>
+
+<style scoped>
+section {
+  margin: 0 2vw;
+}
+
+h2 {
+  color: white;
+  font-size: 2.5vw;
+  padding: 2vw 0;
+}
+
+.top5-container {
+  display: flex;
+  gap: 3vw;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  width: 30vw;
+  height: 20vw;
+  position: relative;
+}
+
+.rank {
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.05);
+  -webkit-text-stroke: 0.4vw rgba(255, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17%;
+  margin: 0 0 0 1vw;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform .4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.12);
+}
+
+</style>
