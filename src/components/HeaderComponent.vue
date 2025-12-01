@@ -1,10 +1,10 @@
 <script setup>
-const emit = defineEmits(["search"]);
+// const emit = defineEmits(["search"]);
 
-function sendSearch(event) {
-    const term = event.target.value;
-    emit("search", term);
-}
+// function sendSearch(event) {
+//     const term = event.target.value;
+//     emit("search", term);
+// }
 </script>
 <template>
     <header class="navbar">
@@ -21,9 +21,9 @@ function sendSearch(event) {
       <router-link to="/tv">Séries</router-link>
     </div>
 
-    <div class="right">
+    <!-- <div class="right">
       <input type="text" placeholder="Buscar filmes e séries..." class="search" @input="sendSearch" />
-    </div>
+    </div> -->
   </nav>
 </header>
 
