@@ -2,6 +2,8 @@
 import { onMounted } from 'vue'
 import { useSerieStore } from '@/stores/serieStore'
 import HeroSeries from '@/components/HeroSeries.vue'
+import SeriesCarousel from '@/components/SeriesCarousel.vue'
+import SeriesAnimation from '@/components/SeriesAnimation.vue'
 
 const serieStore = useSerieStore()
 
@@ -13,18 +15,8 @@ onMounted(async () => {
 <template>
   <div class="series-container">
     <HeroSeries/>
-    <div class="grid">
-      <router-link
-        v-for="serie in serieStore.series"
-        :key="serie.id"
-        :to="`/serie/${serie.id}`"
-        class="serie-card"
-      >
-        <div>
-          <img :src="`https://image.tmdb.org/t/p/w500${serie.poster_path}`" :alt="serie.title" />
-        </div>
-      </router-link>
-    </div>
+    <SeriesCarousel/>
+    <SeriesAnimation/>
   </div>
 </template>
 
@@ -66,6 +58,7 @@ onMounted(async () => {
   margin-top: 0.5rem;
   font-size: 1rem;
 }
+
 
 </style>
 

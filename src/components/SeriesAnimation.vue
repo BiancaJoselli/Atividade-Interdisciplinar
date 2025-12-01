@@ -11,14 +11,15 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 
 onMounted(async () => {
-  await serieStore.getSeries()
+  await serieStore.getAnimationSeries()
 })
+
 </script>
 
 <template>
 
   <section>
-    <h2>Séries</h2>
+    <h2>Animações</h2>
     <swiper
       :modules="[Navigation]"
       :slides-per-view="5"
@@ -27,7 +28,7 @@ onMounted(async () => {
       class="mySwiper"
     >
       <swiper-slide
-        v-for="serie in serieStore.series"
+        v-for="serie in serieStore.animationSeries"
         :key="serie.id"
       >
       <router-link :to="`/serie/${serie.id}`">

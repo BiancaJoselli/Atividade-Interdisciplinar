@@ -78,7 +78,7 @@ onMounted(async () => {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: 50% 30%;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
