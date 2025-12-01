@@ -1,38 +1,47 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
 import HeroMovies from '@/components/HeroMovies.vue'
 import MoviesCarousel from '@/components/MoviesCarousel.vue'
 import MoviesAnimation from '@/components/MoviesAnimation.vue'
 
-const movieStore = useMovieStore()
+const props = defineProps({
+  search: String
+});
+
+const movieStore = useMovieStore();
 
 onMounted(async () => {
-  await movieStore.listMovies()
-})
+  await movieStore.listMovies();
+});
+
+const filteredMovies = computed(() => {
+  if (!props.search) return movieStore.movies;
+
+  return movieStore.movies.filter(movie =>
+    movie.title?.toLowerCase().includes(props.search.toLowerCase())
+  );
+});
 </script>
 
 <template>
   <div class="movies-container">
     <HeroMovies />
-    <MoviesCarousel />
-    <MoviesAnimation />
+    <MoviesCarousel :movies="filteredMovies" />
+    <MoviesAnimation :movies="filteredMovies" />
   </div>
 </template>
-
 <style scoped>
 .movies-container {
   padding: 2rem;
 }
 
-/* GRID DE FILMES (se você usar em outro lugar) */
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
 
-/* Card dos filmes */
 .movie-card {
   display: flex;
   flex-direction: column;

@@ -1,20 +1,20 @@
 <script setup>
-import { onMounted, computed } from 'vue'
-import { useMovieStore } from '@/stores/movieStore'
+import { computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-const movieStore = useMovieStore()
-
-onMounted(async () => {
-  await movieStore.listMovies()
-})
+const props = defineProps({
+  movies: {
+    type: Array,
+    required: true
+  }
+});
 
 const noAnimatedMovies = computed(() =>
-  movieStore.movies.filter(movie => !movie.genre_ids?.includes(16))
-)
+  props.movies.filter(movie => !movie.genre_ids?.includes(16))
+);
 </script>
 
 <template>
