@@ -12,9 +12,8 @@ const props = defineProps({
   }
 });
 
-const noAnimatedMovies = computed(() =>
-  props.movies.filter(movie => !movie.genre_ids?.includes(16))
-);
+// Agora SEM FILTRO — retorna todos os filmes
+const noAnimatedMovies = computed(() => props.movies);
 </script>
 
 <template>
@@ -46,6 +45,7 @@ const noAnimatedMovies = computed(() =>
     </swiper>
   </section>
 </template>
+
 
 <style scoped>
 section {
