@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movieStore'
+import router from '@/router'
 
 const movieStore = useMovieStore()
 
@@ -17,7 +18,11 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div>
+    <button class="back" @click="router.push('/filmes')">&lt;</button>
+    </div>
   <div class="main">
+
     <div>
       <img
         class="poster"
@@ -58,10 +63,25 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.back {
+  background: transparent;
+  border: solid 0.2vw;
+  border-radius: 3vw;
+  color: #e50914;
+  font-size: 1.5vw;
+  cursor: pointer;
+  margin: 6vw 0 0 2vw;
+  padding: 0.4vw 0.8vw;
+}
+
+.back:hover {
+  opacity: 0.7;
+}
+
 .main {
   color: white;
   display: flex;
-  margin: 6vw 2vw 0 2vw;
+  margin: 0 2vw 2vw 2vw;
 }
 
 .poster {
