@@ -22,13 +22,10 @@ onMounted(async () => {
 
         <div class="cards">
             <div v-for="(movie, index) in top5" :key="movie.id" class="card">
-                <!-- Ranking -->
                 <span class="ranking">{{ index + 1 }}</span>
 
-                <!-- Card Poster -->
                 <img :src="imageBase + movie.poster_path" class="poster" />
 
-                <!-- Conteúdo -->
                 <div class="info">
                     <div class="header-info">
                         <span class="tag">FILME</span>

@@ -2,7 +2,6 @@
 import { onMounted} from 'vue'
 import { useSerieStore } from "@/stores/serieStore"
 
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'

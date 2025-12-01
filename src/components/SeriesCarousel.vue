@@ -85,7 +85,6 @@ h2 {
   transform: scale(1.12);
 }
 
-/* Controles do Swiper */
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev) {
   color: rgb(0, 0, 0);

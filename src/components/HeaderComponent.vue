@@ -90,8 +90,8 @@ a:hover {
 }
 
 .search:focus {
-  outline: none;        /* remove a borda branca padrão */
-  border: 1px solid #e62429; /* opcional: borda vermelha estilizada */
+  outline: none;
+  border: 1px solid #e62429; 
 }
 
 .search:hover {
